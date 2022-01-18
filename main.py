@@ -192,7 +192,13 @@ def withdraw_window():
     icon = pystray.Icon("MKS", image, "MKS", menu)
     icon.run()
 
-window.protocol('WM_DELETE_WINDOW', withdraw_window)
+def closeOrWithdraw() :
+    if startButton :
+        window.destroy()
+    else :
+        withdraw_window()
+
+window.protocol('WM_DELETE_WINDOW', closeOrWithdraw)
 
 window.resizable(False, False)
 window.mainloop()
